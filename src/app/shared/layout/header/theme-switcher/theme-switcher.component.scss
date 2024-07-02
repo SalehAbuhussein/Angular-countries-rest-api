@@ -1,0 +1,10 @@
+.theme-switcher-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

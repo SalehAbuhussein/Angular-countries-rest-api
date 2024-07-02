@@ -1,0 +1,33 @@
+.country-item-wrapper {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  .country-item-img {
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .country-item-title {
+    margin-bottom: 16px;
+  }
+
+  .country-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .info-item {
+      display: flex;
+      gap: 2px;
+    }
+  }
+
+  .country-info-wrapper {
+    padding: 24px;
+  }
+}

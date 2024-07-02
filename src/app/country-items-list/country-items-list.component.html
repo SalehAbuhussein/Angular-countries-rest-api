@@ -1,0 +1,5 @@
+<div class="country-items-list-wrapper">
+  @for (item of countryItemsList; track item.capital) {
+    <app-country-item [item]="item" />
+  }
+</div>

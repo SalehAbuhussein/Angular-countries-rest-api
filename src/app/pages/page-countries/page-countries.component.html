@@ -1,0 +1,6 @@
+<div class="filter-wrapper">
+  <app-country-search-input (inputChange)="onInputChange($event)" />
+  <app-countries-region-filter-dropdown (dropdownItemSelected)="onDropdownItemSelected($event)" />
+</div>
+
+<app-country-items-list [countryItemsList]="countryService.countries" />
