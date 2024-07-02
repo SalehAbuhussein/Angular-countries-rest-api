@@ -18,17 +18,33 @@ export class CountriesRegionFilterDropdownComponent {
 
   countryService = inject(CountryService);
 
+  /**
+   * Open country regions dropdown
+   * 
+   */
   onDropdownClick() {
     this.isMenuOpened = true;
   }
 
+  /**
+   * Close country region dropdown
+   * when clicking outside it
+   * 
+   */
   onOutsideClick() {
     this.isMenuOpened = false;
   }
 
-  onDropdownItemClick(selectedItem: string) {
-    this.dropdownItemSelected.emit(selectedItem);
-    this.placeholder = selectedItem;
+  /**
+   *
+   * Select region from the region dropdown
+   * then close the region dropdown
+   *  
+   * @param selectedRegion selected region from the regions dropdown 
+   */
+  onDropdownItemClick(selectedRegion: string) {
+    this.dropdownItemSelected.emit(selectedRegion);
+    this.placeholder = selectedRegion;
     this.onOutsideClick();
   }
 }

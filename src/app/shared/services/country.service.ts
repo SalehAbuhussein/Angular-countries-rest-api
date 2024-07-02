@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Country } from '../models/country.model';
-import { BehaviorSubject, Observable, Subject, catchError, count, debounceTime, distinctUntilChanged, map, merge, of, startWith, switchMap, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,12 @@ export class CountryService {
   
   countries: Country[] = [];
 
+  /**
+   * Get all countries from api
+   * 
+   * @param {string} region region of the countries
+   * @returns {Observable<Country[]>}
+   */
   getAllCountries(region?: string): Observable<Country[]> {
 
     if (region) {
@@ -21,6 +27,14 @@ export class CountryService {
     return this._http.get<Country[]>(`${this._apiUrl}/all`);
   }
 
+  /**
+   * 
+   * Get country from api
+   * 
+   * @param name name of the country
+   * @param region region of the country 
+   * @returns {Observable<Country[]>}
+   */
   getCountry(name: string, region?: string): Observable<Country[]> 
   {
     if (name && region) {
@@ -30,6 +44,12 @@ export class CountryService {
     return this._http.get<Country[]>(`${this._apiUrl}/name/${name}`).pipe(map(item => [...item]));
   }
 
+  /**
+   * Get countries filtered by region from api
+   * 
+   * @param region region of the countries 
+   * @returns {Observable<Country[]>}
+   */
   getCountriesByRegion(region: string): Observable<Country[]> 
   {
     return this._http.get<Country[]>(`${this._apiUrl}/region/${region}`);

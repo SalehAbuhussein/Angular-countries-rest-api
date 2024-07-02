@@ -27,20 +27,35 @@ export class PageCountriesComponent implements OnInit, OnDestroy {
     this.perpareCountrySubscriptions();
   }
 
+  /**
+   * Emit searchText$ when country search input changes
+   * 
+   * @param {string} inputValue input value 
+   */
   onInputChange(inputValue: string) {
     this.searchText$.next(inputValue)
   }
 
-  onDropdownItemSelected(region: string) {
+  /**
+   * Select country region then fetch the related countries to that region
+   * 
+   * @param selectedRegion selected region from the regions dropdown
+   */
+  onDropdownItemSelected(selectedRegion: string) {
     this.searchInputCmp.resetInput();
-    this.regionText = region;
+    this.regionText = selectedRegion;
 
-    this.countryService.getCountriesByRegion(region)
+    this.countryService.getCountriesByRegion(selectedRegion)
     .pipe(
       takeUntil(this.destroy$)
     ).subscribe(value => this.countryService.countries = value);
   }
 
+  /**
+   * Initialized necessary subscriptions
+   * to initialize the component
+   * 
+   */
   perpareCountrySubscriptions() {
     this.countryService.getAllCountries().pipe(
       takeUntil(this.destroy$),
